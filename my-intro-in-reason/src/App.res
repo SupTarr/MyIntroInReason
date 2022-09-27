@@ -1,7 +1,18 @@
 // src/Test.res
+%%raw("import './index.css'");
+
 @react.component
-let make = () => {
-  <div> {React.string("Hello World")} </div>
+let make = (~active: bool) => {
+  let activeClass = if active {
+    "text-green-600"
+  }
+  else {
+    "text-red-600"
+  }
+
+  <div className={`mx-5 border-4 border-sky-500 ${activeClass}`}>
+    {React.string("Hello World")}
+  </div>
 }
 
 /* let element = <h1> {React.string("Hello World")} </h1>

@@ -2,8 +2,15 @@
 
 import * as React from "react";
 
+import './index.css'
+;
+
 function App(Props) {
-  return React.createElement("div", undefined, "Hello World");
+  var active = Props.active;
+  var activeClass = active ? "text-green-600" : "text-red-600";
+  return React.createElement("div", {
+              className: "mx-5 border-4 border-sky-500 " + activeClass + ""
+            }, "Hello World");
 }
 
 var make = App;
@@ -11,4 +18,4 @@ var make = App;
 export {
   make ,
 }
-/* react Not a pure module */
+/*  Not a pure module */
