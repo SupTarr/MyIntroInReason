@@ -2,7 +2,7 @@
     "name": "my-intro-in-reason",
     "sources": [
       {
-        "dir": "./",
+        "dir": "./src",
         "subdirs": true
       }
     ],
