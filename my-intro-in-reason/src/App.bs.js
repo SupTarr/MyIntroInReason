@@ -9,7 +9,7 @@ function App(Props) {
   var active = Props.active;
   var activeClass = active ? "text-green-600" : "text-red-600";
   return React.createElement("div", {
-              className: "mx-5 border-4 border-sky-500 " + activeClass + ""
+              className: "sm:mx-5 border-4 border-sky-500 " + activeClass + ""
             }, "Hello World");
 }
 

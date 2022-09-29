@@ -10,7 +10,7 @@ let make = (~active: bool) => {
     "text-red-600"
   }
 
-  <div className={`mx-5 border-4 border-sky-500 ${activeClass}`}>
+  <div className={`sm:mx-5 border-4 border-sky-500 ${activeClass}`}>
     {React.string("Hello World")}
   </div>
 }
