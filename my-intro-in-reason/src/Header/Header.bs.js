@@ -14,6 +14,7 @@ function Header(Props) {
                   className: "font-mono text-blue-400 hover:text-lg"
                 }, greeting), React.createElement("figure", undefined, React.createElement("img", {
                       className: "max-w-[200px]",
+                      alt: "My Profile Picture",
                       src: "../profile.jpg"
                     })));
 }

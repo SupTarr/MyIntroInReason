@@ -12,7 +12,7 @@ let make = (~name: option<string>=?) => {
       {React.string(greeting)} 
     </div>
     <figure>
-      <img src="../profile.jpg" className="max-w-[200px]"/>
+      <img className="max-w-[200px]" src="../profile.jpg" alt="My Profile Picture" />
     </figure>
   </section>
 }
