@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {make as App} from './App.bs';
+import {make as Header} from './Header/Header.bs';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Header name="Supakrit Chuchatwannakul"/>
   </React.StrictMode>
 );
 
