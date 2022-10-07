@@ -3,19 +3,17 @@
 import * as Fact from "./components/Fact/Fact.bs.js";
 import * as React from "react";
 import * as Header from "./components/Header/Header.bs.js";
+import * as Challenge from "./components/Challenge/Challenge.bs.js";
 
 function App(Props) {
-  return React.createElement(
-    React.Fragment,
-    undefined,
-    React.createElement(Header.make, {
-      name: "Supakrit Chuchatwannakul",
-    }),
-    React.createElement(Fact.make, {})
-  );
+  return React.createElement(React.Fragment, undefined, React.createElement(Header.make, {
+                  name: "Supakrit Chuchatwannakul"
+                }), React.createElement(Fact.make, {}), React.createElement(Challenge.make, {}));
 }
 
 var make = App;
 
-export { make };
+export {
+  make ,
+}
 /* Fact Not a pure module */

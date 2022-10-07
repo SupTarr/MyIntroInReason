@@ -5,5 +5,6 @@ let make = () => {
   <>
     <Header name="Supakrit Chuchatwannakul" />
     <Fact />
+    <Challenge />
   </>
 }
