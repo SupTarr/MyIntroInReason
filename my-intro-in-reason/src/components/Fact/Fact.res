@@ -2,6 +2,7 @@
 %%raw("import '../../input.css'")
 
 type myFact = {id: string, question: string, answer: string}
+type colorRGB = {r: int, g: int, b: int}
 
 let myFacts = [
   {id: "fact1", question: "My name is", answer: "Tata"},
@@ -17,18 +18,39 @@ let myFacts = [
 
 @react.component
 let make = () => {
-  /*
-  Belt.Array.map
-  (
-    myFacts,
-    (fact) => {
-      <div className="bg-red-400 max-w-[100px]" id={fact.id}>
-        <p> {React.string(fact.question)} </p>
-        <p> {React.string(fact.answer)} </p>
-      </div>
-    },
-  )
-  */
-  <div> </div>
-}
+  let componentToHex = c => {
+    let hex = Js.Int.toStringWithRadix(c, ~radix=16)
+    Js.String.length(hex) == 1 ? "0" ++ hex : hex
+  }
 
+  let rgbToHex = (r, g, b) => {
+    ("#" ++ componentToHex(r) ++ componentToHex(g) ++ componentToHex(b))
+  }
+
+  let generateRandomColor = (mix: colorRGB) => {
+    let red = ref(Js.Math.random_int(0, 256))
+    let green = ref(Js.Math.random_int(0, 256))
+    let blue = ref(Js.Math.random_int(0, 256))
+
+    // mix the color
+    red := (red.contents + mix.r) / 2
+    green := (green.contents + mix.g) / 2
+    blue := (blue.contents + mix.b) / 2
+
+    let color = rgbToHex(red.contents, green.contents, blue.contents)
+    color
+  }
+
+  let items = myFacts->Js.Array2.mapi((fact, index) => {
+    let randomHex = generateRandomColor({r: 255, g: 255, b: 255})
+    <div style={ReactDOM.Style.make(~backgroundColor=`${randomHex}`, ())} id={fact.id}>
+      <p>
+        <strong> {("Question " ++ Belt.Int.toString(index + 1) ++ ": ")->React.string} </strong>
+        {React.string(fact.question)}
+      </p>
+      <p> {React.string("Answer: " ++ fact.answer)} </p>
+    </div> 
+  })
+
+  <section className="flex flex-wrap justify-center"> {items->React.array} </section>
+}
