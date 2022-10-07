@@ -89,7 +89,7 @@ function Fact(Props) {
   return React.createElement("section", {
               className: "max-w-[1000px] mx-auto"
             }, React.createElement("h2", {
-                  className: "text-center text-2xl font-bold my-3"
+                  className: "text-center text-2xl font-bold mt-5 mb-2"
                 }, "My Fact"), React.createElement("div", {
                   className: "flex flex-wrap justify-center"
                 }, items));

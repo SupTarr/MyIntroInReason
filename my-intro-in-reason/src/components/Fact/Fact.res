@@ -53,7 +53,7 @@ let make = () => {
   })
 
   <section className="max-w-[1000px] mx-auto">
-    <h2 className="text-center text-2xl font-bold my-3"> {React.string("My Fact")} </h2>
+    <h2 className="text-center text-2xl font-bold mt-5 mb-2"> {React.string("My Fact")} </h2>
     <div className="flex flex-wrap justify-center"> {items->React.array} </div>
   </section>
 }

@@ -8,12 +8,12 @@ let make = (~name: option<string> = ?) => {
   | None => "Hello stranger!"
   }
 
-  <section className="flex flex-wrap items-center justify-center flex-col md:justify-around md:flex-row max-w-[1000px] mx-auto my-4">
-    <div className="my-4 transition text-center text-2xl font-bold hover:scale-x-110"> 
+  <section className="flex flex-wrap items-center justify-center flex-col md:justify-around md:flex-row max-w-[1000px] mx-auto my-5">
+    <div className="my-4 transition text-center text-2xl font-bold hover:scale-110"> 
       {React.string(greeting)} 
     </div>
     <figure>
-      <img className="max-w-[200px] mx-auto rounded-xl" src="../profile.jpg" alt="My Profile Picture" />
+      <img className="transition max-w-[200px] mx-auto rounded-xl hover:scale-105" src="../profile.jpg" alt="My Profile Picture" />
     </figure>
   </section>
 }

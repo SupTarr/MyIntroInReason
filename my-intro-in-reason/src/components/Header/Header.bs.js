@@ -9,11 +9,11 @@ function Header(Props) {
   var name = Props.name;
   var greeting = name !== undefined ? "Hello, I am " + name + "!" : "Hello stranger!";
   return React.createElement("section", {
-              className: "flex flex-wrap items-center justify-center flex-col md:justify-around md:flex-row max-w-[1000px] mx-auto my-4"
+              className: "flex flex-wrap items-center justify-center flex-col md:justify-around md:flex-row max-w-[1000px] mx-auto my-5"
             }, React.createElement("div", {
-                  className: "my-4 transition text-center text-2xl font-bold hover:scale-x-110"
+                  className: "my-4 transition text-center text-2xl font-bold hover:scale-110"
                 }, greeting), React.createElement("figure", undefined, React.createElement("img", {
-                      className: "max-w-[200px] mx-auto rounded-xl",
+                      className: "transition max-w-[200px] mx-auto rounded-xl hover:scale-105",
                       alt: "My Profile Picture",
                       src: "../profile.jpg"
                     })));
