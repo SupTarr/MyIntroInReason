@@ -79,6 +79,7 @@ function Fact(Props) {
               b: 255
             });
         return React.createElement("div", {
+                    className: "transition mx-5 my-2 p-2 rounded-lg min-w-[250px] drop-shadow-md hover:drop-shadow-2xl hover:scale-110",
                     id: fact.id,
                     style: {
                       backgroundColor: "" + randomHex + ""
@@ -86,8 +87,12 @@ function Fact(Props) {
                   }, React.createElement("p", undefined, React.createElement("strong", undefined, "Question " + String(index + 1 | 0) + ": "), fact.question), React.createElement("p", undefined, "Answer: " + fact.answer));
       });
   return React.createElement("section", {
-              className: "flex flex-wrap justify-center"
-            }, items);
+              className: "max-w-[1000px] mx-auto"
+            }, React.createElement("h2", {
+                  className: "text-center text-2xl font-bold my-3"
+                }, "My Fact"), React.createElement("div", {
+                  className: "flex flex-wrap justify-center"
+                }, items));
 }
 
 var make = Fact;

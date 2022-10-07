@@ -5,14 +5,17 @@ import * as React from "react";
 import * as Header from "./components/Header/Header.bs.js";
 
 function App(Props) {
-  return React.createElement(React.Fragment, undefined, React.createElement(Header.make, {
-                  name: "Supakrit Chuchatwannakul"
-                }), React.createElement(Fact.make, {}));
+  return React.createElement(
+    React.Fragment,
+    undefined,
+    React.createElement(Header.make, {
+      name: "Supakrit Chuchatwannakul",
+    }),
+    React.createElement(Fact.make, {})
+  );
 }
 
 var make = App;
 
-export {
-  make ,
-}
+export { make };
 /* Fact Not a pure module */

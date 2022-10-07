@@ -24,7 +24,7 @@ let make = () => {
   }
 
   let rgbToHex = (r, g, b) => {
-    ("#" ++ componentToHex(r) ++ componentToHex(g) ++ componentToHex(b))
+    "#" ++ componentToHex(r) ++ componentToHex(g) ++ componentToHex(b)
   }
 
   let generateRandomColor = (mix: colorRGB) => {
@@ -43,14 +43,17 @@ let make = () => {
 
   let items = myFacts->Js.Array2.mapi((fact, index) => {
     let randomHex = generateRandomColor({r: 255, g: 255, b: 255})
-    <div style={ReactDOM.Style.make(~backgroundColor=`${randomHex}`, ())} id={fact.id}>
+    <div style={ReactDOM.Style.make(~backgroundColor=`${randomHex}`, ())} className="transition mx-5 my-2 p-2 rounded-lg min-w-[250px] drop-shadow-md hover:drop-shadow-2xl hover:scale-110" id={fact.id}>
       <p>
         <strong> {("Question " ++ Belt.Int.toString(index + 1) ++ ": ")->React.string} </strong>
         {React.string(fact.question)}
       </p>
       <p> {React.string("Answer: " ++ fact.answer)} </p>
-    </div> 
+    </div>
   })
 
-  <section className="flex flex-wrap justify-center"> {items->React.array} </section>
+  <section className="max-w-[1000px] mx-auto">
+    <h2 className="text-center text-2xl font-bold my-3"> {React.string("My Fact")} </h2>
+    <div className="flex flex-wrap justify-center"> {items->React.array} </div>
+  </section>
 }
