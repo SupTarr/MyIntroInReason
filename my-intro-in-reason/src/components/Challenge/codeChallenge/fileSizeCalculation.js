@@ -46,12 +46,12 @@ function fileSizeCalculation(fileList) {
       otherSize += parseInt(listSize[i]);
     }
   }
-  let result = "";
-  result += `music ${musicSize}b\n`;
-  result += `images ${imagesSize}b\n`;
-  result += `movies ${moviesSize}b\n`;
-  result += `other ${otherSize}b`;
+  let result = [];
+  result.push("music " + musicSize + "b");
+  result.push("images " + imagesSize + "b");
+  result.push("movies " + moviesSize + "b");
+  result.push("other " + otherSize + "b");
   return result;
 }
 
-console.log(fileSizeCalculation(files))
+console.log(fileSizeCalculation(files));
