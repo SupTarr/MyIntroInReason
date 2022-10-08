@@ -3,7 +3,7 @@
 
 var fizzBuzz = (function (stop) {
     let result = [];
-    for (var i = 1; i < stop; i++) {
+    for (var i = 1; i <= stop; i++) {
       if (i % 15 === 0) {
         result.push("FizzBuzz");
       } else if (i % 3 === 0) {

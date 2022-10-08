@@ -79,8 +79,8 @@ function Fact(Props) {
               b: 255
             });
         return React.createElement("div", {
+                    key: fact.id,
                     className: "transition mx-5 my-2 p-2 rounded-lg min-w-[250px] drop-shadow-md hover:drop-shadow-2xl hover:scale-110",
-                    id: fact.id,
                     style: {
                       backgroundColor: "" + randomHex + ""
                     }
@@ -89,7 +89,7 @@ function Fact(Props) {
   return React.createElement("section", {
               className: "max-w-[1000px] mx-auto"
             }, React.createElement("h2", {
-                  className: "text-center text-2xl font-bold mt-5 mb-2"
+                  className: "text-center text-xl font-bold mt-10 mb-2"
                 }, "My Fact"), React.createElement("div", {
                   className: "flex flex-wrap justify-center"
                 }, items));

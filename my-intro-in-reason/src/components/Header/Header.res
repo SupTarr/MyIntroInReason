@@ -9,8 +9,8 @@ let make = (~name: option<string> = ?) => {
   }
 
   <section className="flex flex-wrap items-center justify-center flex-col md:justify-around md:flex-row max-w-[1000px] mx-auto my-5">
-    <div className="my-4 transition text-center text-2xl font-bold hover:scale-110"> 
-      {React.string(greeting)} 
+    <div className="my-4 transition text-center text-2xl font-bold hover:scale-110">
+      {React.string(greeting)}
     </div>
     <figure>
       <img className="transition max-w-[200px] mx-auto rounded-xl hover:scale-105" src="../profile.jpg" alt="My Profile Picture" />
