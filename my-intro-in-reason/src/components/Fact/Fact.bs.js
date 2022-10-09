@@ -9,33 +9,33 @@ import '../../input.css'
 var myFacts = [
   {
     id: "fact1",
-    question: "My name is",
+    question: "My nickname is",
     answer: "Tata"
   },
   {
     id: "fact2",
-    question: "My name is",
-    answer: "Tata"
+    question: "My hometown is",
+    answer: "Hat Yai, Songkhla, Thailand"
   },
   {
     id: "fact3",
-    question: "My name is",
-    answer: "Tata"
+    question: "My favourite food is",
+    answer: "Papaya salad (Som tum)"
   },
   {
     id: "fact4",
-    question: "My name is",
-    answer: "Tata"
+    question: "My favourite series is",
+    answer: "Hometown Cha-Cha-Cha"
   },
   {
     id: "fact5",
-    question: "My name is",
-    answer: "Tata"
+    question: "My favourite book is",
+    answer: "Atomic Habits"
   },
   {
     id: "fact6",
-    question: "My name is",
-    answer: "Tata"
+    question: "My favourite footballer is",
+    answer: "Cristiano Ronaldo"
   },
   {
     id: "fact7",
@@ -80,17 +80,17 @@ function Fact(Props) {
             });
         return React.createElement("div", {
                     key: fact.id,
-                    className: "transition mx-5 my-2 p-2 rounded-lg min-w-[250px] drop-shadow-md hover:drop-shadow-2xl hover:scale-110",
+                    className: "transition mx-5 my-2 p-2 rounded-lg min-w-[300px] drop-shadow-lg hover:drop-shadow-2xl hover:scale-110",
                     style: {
                       backgroundColor: "" + randomHex + ""
                     }
                   }, React.createElement("p", undefined, React.createElement("strong", undefined, "Question " + String(index + 1 | 0) + ": "), fact.question), React.createElement("p", undefined, "Answer: " + fact.answer));
       });
   return React.createElement("section", {
-              className: "max-w-[1000px] mx-auto"
+              className: "max-w-[1100px] mx-auto"
             }, React.createElement("h2", {
                   className: "text-center text-xl font-bold mt-10 mb-2"
-                }, "My Fact"), React.createElement("div", {
+                }, "9 Facts About Me"), React.createElement("div", {
                   className: "flex flex-wrap justify-center"
                 }, items));
 }

@@ -13,7 +13,7 @@ function Header(Props) {
             }, React.createElement("div", {
                   className: "my-4 transition text-center text-2xl font-bold hover:scale-110"
                 }, greeting), React.createElement("figure", undefined, React.createElement("img", {
-                      className: "transition max-w-[200px] mx-auto rounded-xl hover:scale-105",
+                      className: "transition max-w-[200px] mx-auto rounded-xl drop-shadow-lg hover:scale-105 hover:drop-shadow-2xl",
                       alt: "My Profile Picture",
                       src: "../profile.jpg"
                     })));
