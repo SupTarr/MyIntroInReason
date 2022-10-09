@@ -29,7 +29,7 @@ var myFacts = [
   },
   {
     id: "fact5",
-    question: "My favourite series is",
+    question: "My favourite serie is",
     answer: "Hometown Cha-Cha-Cha"
   },
   {

@@ -9,7 +9,7 @@ let myFacts = [
   {id: "fact2", question: "My hometown is", answer: "Hat Yai, Songkhla, Thailand"},
   {id: "fact3", question: "My favourite food is", answer: "Papaya salad (Som tum)"},
   {id: "fact4", question: "My favourite song is", answer: "Get Lucky"},
-  {id: "fact5", question: "My favourite series is", answer: "Hometown Cha-Cha-Cha"},
+  {id: "fact5", question: "My favourite serie is", answer: "Hometown Cha-Cha-Cha"},
   {id: "fact6", question: "My favourite book is", answer: "Atomic Habits"},
   {id: "fact7", question: "My favourite sport is", answer: "Football"},
   {id: "fact8", question: "My favourite soccer team is", answer: "Manchester United"},

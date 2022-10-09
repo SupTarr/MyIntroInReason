@@ -2,7 +2,6 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as Js_string from "rescript/lib/es6/js_string.js";
 
 import '../../../../input.css'
 ;
@@ -14,25 +13,40 @@ var fileSizeCalculation = (function (fileList) {
     const listName = [];
     const listSize = [];
     lists.forEach((list) => {
-      const temp = list.split(" ");
-      listName.push(temp[0]);
-      listSize.push(temp[1]);
+      if (list) {
+        const temp = list.split(" ");
+        if (temp) {
+          listName.push(temp[0]);
+          listSize.push(temp[1]);
+        }
+      }
     });
     const resultType = [];
     const resultSize = [];
     for (let i = 0; i < listName.length; i++) {
-      let type = listName[i].split(".");
-      type = type[type.length - 1];
-      let size = listSize[i].split("b");
-      resultSize.push(size[0]);
-      if (type === "mp3" || type === "aac" || type === "flac") {
-        resultType.push("music");
-      } else if (type === "jpg" || type === "bmp" || type === "gif") {
-        resultType.push("images");
-      } else if (type === "mp4" || type === "avi" || type === "mkv") {
-        resultType.push("movies");
+      if (listName[i]) {
+        let type = listName[i].split(".");
+        console.log(type);
+        if (type.length > 1) {
+          type = type[type.length - 1];
+          if (listSize[i]) {
+            let size = listSize[i].split("b");
+            if (size.length > 1) {
+              resultSize.push(size[0]);
+            }
+          }
+        }
+        if (type === "mp3" || type === "aac" || type === "flac") {
+          resultType.push("music");
+        } else if (type === "jpg" || type === "bmp" || type === "gif") {
+          resultType.push("images");
+        } else if (type === "mp4" || type === "avi" || type === "mkv") {
+          resultType.push("movies");
+        } else {
+          resultType.push("other");
+        }
       } else {
-        resultType.push("other");
+        listName.pop(i);
       }
     }
     let musicSize = 0;
@@ -60,46 +74,47 @@ var fileSizeCalculation = (function (fileList) {
 
 function FileSizeCalculation(Props) {
   var match = React.useState(function () {
-        return 0;
+        return files;
       });
-  var setFizzBuzzStop = match[1];
-  var fizzBuzzStop = match[0];
-  var handleFizzBuzzStopChange = function ($$event) {
+  var setfilesList = match[1];
+  var filesList = match[0];
+  var handleFilesListChange = function ($$event) {
     var value = $$event.currentTarget.value;
-    if (Js_string.charAt(0, value) === "0") {
-      return Curry._1(setFizzBuzzStop, (function (param) {
-                    return 0;
-                  }));
-    } else {
-      return Curry._1(setFizzBuzzStop, (function (param) {
-                    return value;
-                  }));
-    }
+    Curry._1(setfilesList, (function (param) {
+            return value;
+          }));
   };
-  var fileSizeCalitems = fileSizeCalculation(files).map(function (file, index) {
+  var fileSizeCalitems = fileSizeCalculation(filesList).map(function (file, index) {
         return React.createElement("li", {
                     key: String(index)
                   }, file);
       });
   return React.createElement("section", undefined, React.createElement("h2", {
                   className: "text-center text-xl font-bold mt-10 mb-2"
-                }, "Fizz-Buzz Challenge"), React.createElement("div", {
-                  className: "flex flex-wrap max-w-[1000px] mx-auto justify-around"
+                }, "File Size Calculation Challenge"), React.createElement("div", {
+                  className: "flex flex-wrap max-w-[1200px] mx-auto justify-around"
                 }, React.createElement("div", {
                       className: "mx-5 mb-3"
                     }, React.createElement("h3", {
-                          className: "max-w-[250px] mb-3"
-                        }, "The task of Fizz-Buzz is: Print integers one-to-N, but print “Fizz” if an integer is divisible by three, “Buzz” if an integer is divisible by five, and “FizzBuzz” if an integer is divisible by both three and five."), React.createElement("p", undefined, "Input where you want to stop"), React.createElement("input", {
-                          className: "max-w-[100px]",
-                          id: "fizzBuzzInput",
-                          min: "0",
-                          type: "number",
-                          value: String(fizzBuzzStop),
-                          onChange: handleFizzBuzzStopChange
+                          className: "max-w-[350px]"
+                        }, "You want to know how many bytes of memory each file type is consuming. Each file has a name, and the part of the name after the last dot is called the file extension, which identifies what type of file it is. We distinguish four broad types of file:"), React.createElement("ul", {
+                          className: "max-w-[300px] mb-3"
+                        }, React.createElement("li", undefined, "• music (only extensions: mp3, aac, flac)"), React.createElement("li", undefined, "• Image (only extensions: jpg, bmp.gif)"), React.createElement("li", undefined, "• movie (only extensions: mp4, avi, mkv)"), React.createElement("li", undefined, "• other (all other extensions; for example: 7z, txt, zip)")), React.createElement("p", {
+                          className: "pb-2"
+                        }, "Input a list of files"), React.createElement("textarea", {
+                          className: "p-2 rounded-lg",
+                          id: "filesListInput",
+                          style: {
+                            resize: "none"
+                          },
+                          cols: 20,
+                          rows: 5,
+                          value: filesList,
+                          onChange: handleFilesListChange
                         })), React.createElement("pre", {
-                      className: "transition max-w-[500px] h-[300px] mx-5 mb-3 p-5 overflow-y-scroll bg-red-300 rounded-xl drop-shadow-lg hover:drop-shadow-2xl"
-                    }, React.createElement("code", undefined, "function (fileList) {\r\n  const lists = fileList.split(\"\\n\");\r\n  const listName = [];\r\n  const listSize = [];\r\n  lists.forEach((list) => {\r\n    const temp = list.split(\" \");\r\n    listName.push(temp[0]);\r\n    listSize.push(temp[1]);\r\n  });\r\n  const resultType = [];\r\n  const resultSize = [];\r\n  for (let i = 0; i < listName.length; i++) {\r\n    let type = listName[i].split(\".\");\r\n    type = type[type.length - 1];\r\n    let size = listSize[i].split(\"b\");\r\n    resultSize.push(size[0]);\r\n    if (type === \"mp3\" || type === \"aac\" || type === \"flac\") {\r\n      resultType.push(\"music\");\r\n    } else if (type === \"jpg\" || type === \"bmp\" || type === \"gif\") {\r\n      resultType.push(\"images\");\r\n    } else if (type === \"mp4\" || type === \"avi\" || type === \"mkv\") {\r\n      resultType.push(\"movies\");\r\n    } else {\r\n      resultType.push(\"other\");\r\n    }\r\n  }\r\n  let musicSize = 0;\r\n  let imagesSize = 0;\r\n  let moviesSize = 0;\r\n  let otherSize = 0;\r\n  for (let i = 0; i < listName.length; i++) {\r\n    if (resultType[i] === \"music\") {\r\n      musicSize += parseInt(listSize[i]);\r\n    } else if (resultType[i] === \"images\") {\r\n      imagesSize += parseInt(listSize[i]);\r\n    } else if (resultType[i] === \"movies\") {\r\n      moviesSize += parseInt(listSize[i]);\r\n    } else {\r\n      otherSize += parseInt(listSize[i]);\r\n    }\r\n  }\r\n  let result = [];\r\n  result.push(\"music \" + musicSize + \"b\");\r\n  result.push(\"images \" + imagesSize + \"b\");\r\n  result.push(\"movies \" + moviesSize + \"b\");\r\n  result.push(\"other \" + otherSize + \"b\");\r\n  return result;\r\n}\r\n")), fizzBuzzStop.toString().length !== 0 && fizzBuzzStop !== 0 ? React.createElement("div", {
-                        className: "transition min-w-[150px] h-[300px] mx-5 mb-3 p-5 bg-red-200 rounded-xl overflow-y-scroll drop-shadow-lg hover:drop-shadow-2xl"
+                      className: "transition max-w-[500px] h-[400px] mx-5 mb-3 p-5 overflow-scroll bg-red-300 rounded-xl drop-shadow-lg hover:drop-shadow-2xl"
+                    }, React.createElement("code", undefined, "function (fileList) {\r\n  const lists = fileList.split(\"\\n\");\r\n  const listName = [];\r\n  const listSize = [];\r\n  lists.forEach((list) => {\r\n    if (list) {\r\n      const temp = list.split(\" \");\r\n      if (temp) {\r\n        listName.push(temp[0]);\r\n        listSize.push(temp[1]);\r\n      }\r\n    }\r\n  });\r\n  const resultType = [];\r\n  const resultSize = [];\r\n  for (let i = 0; i < listName.length; i++) {\r\n    if (listName[i]) {\r\n      let type = listName[i].split(\".\");\r\n      console.log(type);\r\n      if (type.length > 1) {\r\n        type = type[type.length - 1];\r\n        if (listSize[i]) {\r\n          let size = listSize[i].split(\"b\");\r\n          if (size.length > 1) {\r\n            resultSize.push(size[0]);\r\n          }\r\n        }\r\n      }\r\n      if (type === \"mp3\" || type === \"aac\" || type === \"flac\") {\r\n        resultType.push(\"music\");\r\n      } else if (type === \"jpg\" || type === \"bmp\" || type === \"gif\") {\r\n        resultType.push(\"images\");\r\n      } else if (type === \"mp4\" || type === \"avi\" || type === \"mkv\") {\r\n        resultType.push(\"movies\");\r\n      } else {\r\n        resultType.push(\"other\");\r\n      }\r\n    } else {\r\n      listName.pop(i);\r\n    }\r\n  }\r\n  let musicSize = 0;\r\n  let imagesSize = 0;\r\n  let moviesSize = 0;\r\n  let otherSize = 0;\r\n  for (let i = 0; i < listName.length; i++) {\r\n    if (resultType[i] === \"music\") {\r\n      musicSize += parseInt(listSize[i]);\r\n    } else if (resultType[i] === \"images\") {\r\n      imagesSize += parseInt(listSize[i]);\r\n    } else if (resultType[i] === \"movies\") {\r\n      moviesSize += parseInt(listSize[i]);\r\n    } else {\r\n      otherSize += parseInt(listSize[i]);\r\n    }\r\n  }\r\n  let result = [];\r\n  result.push(\"music \" + musicSize + \"b\");\r\n  result.push(\"images \" + imagesSize + \"b\");\r\n  result.push(\"movies \" + moviesSize + \"b\");\r\n  result.push(\"other \" + otherSize + \"b\");\r\n  return result;\r\n}\r\n")), fileSizeCalitems.length !== 0 ? React.createElement("div", {
+                        className: "transition min-w-[150px] h-[150px] mx-5 mb-3 p-5 bg-red-200 rounded-xl overflow-y-scroll drop-shadow-lg hover:drop-shadow-2xl"
                       }, fileSizeCalitems) : React.createElement(React.Fragment, undefined)));
 }
 

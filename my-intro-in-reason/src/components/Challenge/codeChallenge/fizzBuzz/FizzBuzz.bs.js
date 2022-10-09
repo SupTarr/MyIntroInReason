@@ -25,7 +25,7 @@ var fizzBuzz = (function (stop) {
 
 function FizzBuzz(Props) {
   var match = React.useState(function () {
-        return 0;
+        return 10;
       });
   var setFizzBuzzStop = match[1];
   var fizzBuzzStop = match[0];
@@ -54,15 +54,17 @@ function FizzBuzz(Props) {
                       className: "mx-5 mb-3"
                     }, React.createElement("h3", {
                           className: "max-w-[250px] mb-3"
-                        }, "The task of Fizz-Buzz is: Print integers one-to-N, but print “Fizz” if an integer is divisible by three, “Buzz” if an integer is divisible by five, and “FizzBuzz” if an integer is divisible by both three and five."), React.createElement("p", undefined, "Input where you want to stop"), React.createElement("input", {
-                          className: "max-w-[100px]",
+                        }, "The task of Fizz-Buzz is: Print integers one-to-N, but print “Fizz” if an integer is divisible by three, “Buzz” if an integer is divisible by five, and “FizzBuzz” if an integer is divisible by both three and five."), React.createElement("p", {
+                          className: "pb-2"
+                        }, "Input where you want to stop"), React.createElement("input", {
+                          className: "max-w-[100px] p-2 rounded-lg",
                           id: "fizzBuzzInput",
                           min: "0",
                           type: "number",
                           value: String(fizzBuzzStop),
                           onChange: handleFizzBuzzStopChange
                         })), React.createElement("pre", {
-                      className: "transition max-w-[500px] h-[300px] mx-5 mb-3 p-5 overflow-y-scroll bg-red-300 rounded-xl drop-shadow-lg hover:drop-shadow-2xl"
+                      className: "transition max-w-[350px] h-[300px] mx-5 mb-3 p-5 overflow-scroll bg-red-300 rounded-xl drop-shadow-lg hover:drop-shadow-2xl"
                     }, React.createElement("code", undefined, "function fizzBuzz (stop) {\r\n  let result = [];\r\n  for (var i = 1; i <= stop; i++) {\r\n    if (i % 15 === 0) {\r\n      result.push(\"FizzBuzz\");\r\n    } else if (i % 3 === 0) {\r\n      result.push(\"Fizz\");\r\n    } else if (i % 5 === 0) {\r\n      result.push(\"Buzz\");\r\n    } else {\r\n      result.push(i.toString());\r\n    }\r\n  }\r\n  return result\r\n}")), fizzBuzzStop.toString().length !== 0 && fizzBuzzStop !== 0 ? React.createElement("div", {
                         className: "transition min-w-[150px] h-[300px] mx-5 mb-3 p-5 bg-red-200 rounded-xl overflow-y-scroll drop-shadow-lg hover:drop-shadow-2xl"
                       }, fizzBuzzitems) : React.createElement(React.Fragment, undefined)));

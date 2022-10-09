@@ -14,25 +14,40 @@ let fileSizeCalculation = %raw(`
     const listName = [];
     const listSize = [];
     lists.forEach((list) => {
-      const temp = list.split(" ");
-      listName.push(temp[0]);
-      listSize.push(temp[1]);
+      if (list) {
+        const temp = list.split(" ");
+        if (temp) {
+          listName.push(temp[0]);
+          listSize.push(temp[1]);
+        }
+      }
     });
     const resultType = [];
     const resultSize = [];
     for (let i = 0; i < listName.length; i++) {
-      let type = listName[i].split(".");
-      type = type[type.length - 1];
-      let size = listSize[i].split("b");
-      resultSize.push(size[0]);
-      if (type === "mp3" || type === "aac" || type === "flac") {
-        resultType.push("music");
-      } else if (type === "jpg" || type === "bmp" || type === "gif") {
-        resultType.push("images");
-      } else if (type === "mp4" || type === "avi" || type === "mkv") {
-        resultType.push("movies");
+      if (listName[i]) {
+        let type = listName[i].split(".");
+        console.log(type);
+        if (type.length > 1) {
+          type = type[type.length - 1];
+          if (listSize[i]) {
+            let size = listSize[i].split("b");
+            if (size.length > 1) {
+              resultSize.push(size[0]);
+            }
+          }
+        }
+        if (type === "mp3" || type === "aac" || type === "flac") {
+          resultType.push("music");
+        } else if (type === "jpg" || type === "bmp" || type === "gif") {
+          resultType.push("images");
+        } else if (type === "mp4" || type === "avi" || type === "mkv") {
+          resultType.push("movies");
+        } else {
+          resultType.push("other");
+        }
       } else {
-        resultType.push("other");
+        listName.pop(i);
       }
     }
     let musicSize = 0;
@@ -61,68 +76,86 @@ let fileSizeCalculation = %raw(`
 
 @react.component
 let make = () => {
-  let (fizzBuzzStop, setFizzBuzzStop) = React.useState(_ => 0)
-  let handleFizzBuzzStopChange = event => {
+  let (filesList, setfilesList) = React.useState(_ => files)
+  let handleFilesListChange = event => {
     let value = ReactEvent.Form.currentTarget(event)["value"]
-    if Js.String.charAt(0, value) == "0" {
-      setFizzBuzzStop(_ => 0)
-    } else {
-      setFizzBuzzStop(_ => value)
-    }
+    setfilesList(_ => value)
   }
 
-  let fileSizeCalitems = fileSizeCalculation(files)->Js.Array2.mapi((file, index) => {
+  let fileSizeCalitems = fileSizeCalculation(filesList)->Js.Array2.mapi((file, index) => {
     <li key={index->Belt.Int.toString}> {React.string(file)} </li>
   })
 
   <section>
     <h2 className="text-center text-xl font-bold mt-10 mb-2">
-      {React.string("Fizz-Buzz Challenge")}
+      {React.string("File Size Calculation Challenge")}
     </h2>
-    <div className="flex flex-wrap max-w-[1000px] mx-auto justify-around">
+    <div className="flex flex-wrap max-w-[1200px] mx-auto justify-around">
       <div className="mx-5 mb-3">
-        <h3 className="max-w-[250px] mb-3">
+        <h3 className="max-w-[350px]">
           {React.string(
-            "The task of Fizz-Buzz is: Print integers one-to-N, but print “Fizz” if an integer is divisible by three, “Buzz” if an integer is divisible by five, and “FizzBuzz” if an integer is divisible by both three and five.",
+            "You want to know how many bytes of memory each file type is consuming. Each file has a name, and the part of the name after the last dot is called the file extension, which identifies what type of file it is. We distinguish four broad types of file:",
           )}
         </h3>
-        <p> {React.string("Input where you want to stop")} </p>
-        <input
-          type_="number"
-          className="max-w-[100px]"
-          value={fizzBuzzStop->Belt.Int.toString}
-          min="0"
-          id="fizzBuzzInput"
-          onChange={handleFizzBuzzStopChange}
+        <ul className="max-w-[300px] mb-3">
+          <li> {React.string("• music (only extensions: mp3, aac, flac)")} </li>
+          <li> {React.string("• Image (only extensions: jpg, bmp.gif)")} </li>
+          <li> {React.string("• movie (only extensions: mp4, avi, mkv)")} </li>
+          <li> {React.string("• other (all other extensions; for example: 7z, txt, zip)")} </li>
+        </ul>
+        <p className="pb-2"> {React.string("Input a list of files")} </p>
+        <textarea
+          style={ReactDOM.Style.make(~resize="none", ())}
+          className="p-2 rounded-lg"
+          value={filesList}
+          rows=5
+          cols=20
+          id="filesListInput"
+          onChange={handleFilesListChange}
         />
       </div>
       <pre
-        className="transition max-w-[500px] h-[300px] mx-5 mb-3 p-5 overflow-y-scroll bg-red-300 rounded-xl drop-shadow-lg hover:drop-shadow-2xl">
+        className="transition max-w-[500px] h-[400px] mx-5 mb-3 p-5 overflow-scroll bg-red-300 rounded-xl drop-shadow-lg hover:drop-shadow-2xl">
         <code>
           {React.string(`function (fileList) {
   const lists = fileList.split("\\n");
   const listName = [];
   const listSize = [];
   lists.forEach((list) => {
-    const temp = list.split(" ");
-    listName.push(temp[0]);
-    listSize.push(temp[1]);
+    if (list) {
+      const temp = list.split(" ");
+      if (temp) {
+        listName.push(temp[0]);
+        listSize.push(temp[1]);
+      }
+    }
   });
   const resultType = [];
   const resultSize = [];
   for (let i = 0; i < listName.length; i++) {
-    let type = listName[i].split(".");
-    type = type[type.length - 1];
-    let size = listSize[i].split("b");
-    resultSize.push(size[0]);
-    if (type === "mp3" || type === "aac" || type === "flac") {
-      resultType.push("music");
-    } else if (type === "jpg" || type === "bmp" || type === "gif") {
-      resultType.push("images");
-    } else if (type === "mp4" || type === "avi" || type === "mkv") {
-      resultType.push("movies");
+    if (listName[i]) {
+      let type = listName[i].split(".");
+      console.log(type);
+      if (type.length > 1) {
+        type = type[type.length - 1];
+        if (listSize[i]) {
+          let size = listSize[i].split("b");
+          if (size.length > 1) {
+            resultSize.push(size[0]);
+          }
+        }
+      }
+      if (type === "mp3" || type === "aac" || type === "flac") {
+        resultType.push("music");
+      } else if (type === "jpg" || type === "bmp" || type === "gif") {
+        resultType.push("images");
+      } else if (type === "mp4" || type === "avi" || type === "mkv") {
+        resultType.push("movies");
+      } else {
+        resultType.push("other");
+      }
     } else {
-      resultType.push("other");
+      listName.pop(i);
     }
   }
   let musicSize = 0;
@@ -150,9 +183,9 @@ let make = () => {
 `)}
         </code>
       </pre>
-      {fizzBuzzStop->Js.Int.toString->Js.String2.length != 0 && fizzBuzzStop != 0
+      {fileSizeCalitems->Js.Array2.length != 0
         ? <div
-            className="transition min-w-[150px] h-[300px] mx-5 mb-3 p-5 bg-red-200 rounded-xl overflow-y-scroll drop-shadow-lg hover:drop-shadow-2xl">
+            className="transition min-w-[150px] h-[150px] mx-5 mb-3 p-5 bg-red-200 rounded-xl overflow-y-scroll drop-shadow-lg hover:drop-shadow-2xl">
             {fileSizeCalitems->React.array}
           </div>
         : <> </>}

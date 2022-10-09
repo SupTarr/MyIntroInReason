@@ -21,7 +21,7 @@ let fizzBuzz = %raw(`
 
 @react.component
 let make = () => {
-  let (fizzBuzzStop, setFizzBuzzStop) = React.useState(_ => 0)
+  let (fizzBuzzStop, setFizzBuzzStop) = React.useState(_ => 10)
   let handleFizzBuzzStopChange = event => {
     let value = ReactEvent.Form.currentTarget(event)["value"]
     if Js.String.charAt(0, value) == "0" {
@@ -46,10 +46,10 @@ let make = () => {
             "The task of Fizz-Buzz is: Print integers one-to-N, but print “Fizz” if an integer is divisible by three, “Buzz” if an integer is divisible by five, and “FizzBuzz” if an integer is divisible by both three and five.",
           )}
         </h3>
-        <p> {React.string("Input where you want to stop")} </p>
+        <p className="pb-2"> {React.string("Input where you want to stop")} </p>
         <input
           type_="number"
-          className="max-w-[100px]"
+          className="max-w-[100px] p-2 rounded-lg"
           value={fizzBuzzStop->Belt.Int.toString}
           min="0"
           id="fizzBuzzInput"
@@ -57,7 +57,7 @@ let make = () => {
         />
       </div>
       <pre
-        className="transition max-w-[500px] h-[300px] mx-5 mb-3 p-5 overflow-y-scroll bg-red-300 rounded-xl drop-shadow-lg hover:drop-shadow-2xl">
+        className="transition max-w-[350px] h-[300px] mx-5 mb-3 p-5 overflow-scroll bg-red-300 rounded-xl drop-shadow-lg hover:drop-shadow-2xl">
         <code>
           {React.string(`function fizzBuzz (stop) {
   let result = [];
