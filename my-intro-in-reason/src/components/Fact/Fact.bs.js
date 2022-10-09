@@ -24,33 +24,33 @@ var myFacts = [
   },
   {
     id: "fact4",
+    question: "My favourite song is",
+    answer: "Get Lucky"
+  },
+  {
+    id: "fact5",
     question: "My favourite series is",
     answer: "Hometown Cha-Cha-Cha"
   },
   {
-    id: "fact5",
+    id: "fact6",
     question: "My favourite book is",
     answer: "Atomic Habits"
   },
   {
-    id: "fact6",
-    question: "My favourite footballer is",
-    answer: "Cristiano Ronaldo"
-  },
-  {
     id: "fact7",
-    question: "My name is",
-    answer: "Tata"
+    question: "My favourite sport is",
+    answer: "Football"
   },
   {
     id: "fact8",
-    question: "My name is",
-    answer: "Tata"
+    question: "My favourite soccer team is",
+    answer: "Manchester United"
   },
   {
     id: "fact9",
-    question: "My name is",
-    answer: "Tata"
+    question: "My favourite footballer is",
+    answer: "Cristiano Ronaldo"
   }
 ];
 
