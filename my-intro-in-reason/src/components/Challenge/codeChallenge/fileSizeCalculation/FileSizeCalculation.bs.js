@@ -107,7 +107,7 @@ function FileSizeCalculation(Props) {
                           style: {
                             resize: "none"
                           },
-                          cols: 20,
+                          cols: 30,
                           rows: 5,
                           value: filesList,
                           onChange: handleFilesListChange

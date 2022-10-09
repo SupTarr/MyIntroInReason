@@ -109,7 +109,7 @@ let make = () => {
           className="p-2 rounded-lg"
           value={filesList}
           rows=5
-          cols=20
+          cols=30
           id="filesListInput"
           onChange={handleFilesListChange}
         />
