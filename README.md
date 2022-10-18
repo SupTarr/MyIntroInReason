@@ -1,15 +1,13 @@
 # myIntroInReason
 
----
 
 Welcome to my introduction to the ReScript that combined with React to make a React component
 
-Static Website: https://suptarrescript.surge.sh/
-
-## Getting Started
+Static Website: <https://suptarrescript.surge.sh/>
 
 ---
 
+## Getting Started
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
