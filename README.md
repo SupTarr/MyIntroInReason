@@ -3,7 +3,7 @@
 
 Welcome to my introduction to the ReScript that combined with React to make a React component
 
-Static Website: <https://suptarrescript.surge.sh/>
+Static Website: <https://my-intro-in-reason.vercel.app/>
 
 ---
 
