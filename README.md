@@ -1,6 +1,6 @@
 # myIntroInReason
 
-Welcome to my introduction to the ReScript that combined with React to make a React component
+Welcome to my introduction to the **ReScript** that combined with **React** to make a *React component*
 
 ---
 
@@ -23,9 +23,9 @@ npm install npm@latest -g
 - Create React App:
 
 ```sh
-npx create-react-app my-app
-cd my-app
-pm start
+npx create-react-app myIntroInReason
+cd myIntroInReason
+npm install
 ```
 
 - Install ReScript locally:
