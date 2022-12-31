@@ -1,4 +1,4 @@
-# myIntroInReason
+# myIntroInReScript
 
 Welcome to my introduction to the **ReScript** that combined with **React** to make a *React component*
 
