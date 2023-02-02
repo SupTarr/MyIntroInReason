@@ -1,11 +1,9 @@
-@module("axios") external axiosGet: string => Promise.t<'a> = "get"
-
 let v2_base = "https://pokeapi.co/api/v2/pokemon/"
 
 open Promise
 
-let result =
-  axiosGet(v2_base ++ "pikachu")
+let _ =
+  Fetch.get(v2_base ++ "pikachu")
   ->then(data => data->Js.log->resolve)
   ->catch(err => {
     switch err {
@@ -15,5 +13,3 @@ let result =
     }
     resolve()
   })
-
-Js.log(result)

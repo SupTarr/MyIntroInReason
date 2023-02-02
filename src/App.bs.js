@@ -3,9 +3,25 @@
 import * as Fact from "./components/Fact/Fact.bs.js";
 import * as React from "react";
 import * as Header from "./components/Header/Header.bs.js";
+import * as $$Promise from "@ryyppy/rescript-promise/src/Promise.bs.js";
 import * as Challenge from "./components/Challenge/Challenge.bs.js";
+import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
+
+var v2_base = "https://pokeapi.co/api/v2/pokemon/";
 
 function App(Props) {
+  React.useEffect((function () {
+          $$Promise.$$catch(fetch(v2_base + "pikachu").then(function (data) {
+                    return Promise.resolve((console.log(data), undefined));
+                  }), (function (err) {
+                  if (err.RE_EXN_ID === $$Promise.JsError) {
+                    console.log(Belt_Option.getWithDefault(err._1.message, "Must be some non-error value"));
+                  } else {
+                    console.log("Some unknown error");
+                  }
+                  return Promise.resolve(undefined);
+                }));
+        }), []);
   return React.createElement(React.Fragment, undefined, React.createElement(Header.make, {
                   name: "Supakrit Chuchatwannakul"
                 }), React.createElement(Fact.make, {}), React.createElement(Challenge.make, {}));
@@ -14,6 +30,7 @@ function App(Props) {
 var make = App;
 
 export {
+  v2_base ,
   make ,
 }
 /* Fact Not a pure module */
