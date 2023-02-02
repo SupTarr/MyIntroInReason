@@ -5,7 +5,9 @@ import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 
 var v2_base = "https://pokeapi.co/api/v2/pokemon/";
 
-$$Promise.$$catch(fetch(v2_base + "pikachu").then(function (data) {
+$$Promise.$$catch(fetch(v2_base + "pikachu").then(function (response) {
+            return response.text();
+          }).then(function (data) {
           return Promise.resolve((console.log(data), undefined));
         }), (function (err) {
         if (err.RE_EXN_ID === $$Promise.JsError) {
