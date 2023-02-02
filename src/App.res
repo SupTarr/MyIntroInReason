@@ -9,6 +9,7 @@ let make = () => {
   React.useEffect0(() => {
     let _ =
       Fetch.get(v2_base ++ "pikachu")
+      ->then(response => response->Fetch.Response.text)
       ->then(data => data->Js.log->resolve)
       ->catch(err => {
         switch err {
@@ -21,7 +22,7 @@ let make = () => {
 
     None
   })
-  
+
   <>
     <Header name="Supakrit Chuchatwannakul" />
     <Fact />
