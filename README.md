@@ -1,10 +1,11 @@
-# myIntroInReason
+# myIntroInReScript
 
 Welcome to my introduction to the **ReScript** that combined with **React** to make a *React component*
 
 ---
 
 ## Getting Started
+
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
@@ -23,8 +24,8 @@ npm install npm@latest -g
 - Create React App:
 
 ```sh
-npx create-react-app myIntroInReason
-cd myIntroInReason
+npx create-react-app myIntroInReScript
+cd myIntroInReScript
 npm install
 ```
 
@@ -62,7 +63,9 @@ npm install @rescript/react
   "bs-dependencies": ["@rescript/react"]
 }
 ```
-* Add convenience npm scripts to `package.json`:
+
+- Add convenience npm scripts to `package.json`:
+
 ```json
 "scripts": {
   "res:build": "rescript",

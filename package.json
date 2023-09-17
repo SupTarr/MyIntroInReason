@@ -1,6 +1,5 @@
 {
-  "name": "my-intro-in-reason",
-  "type": "module",
+  "name": "my-intro-in-rescript",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
